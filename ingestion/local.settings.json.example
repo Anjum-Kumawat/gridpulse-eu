@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "ENTSOE_TOKEN": "<paste-your-approved-token-here>",
+    "ADLS_ACCOUNT_URL": "https://<dataLakeAccountUrl-from-deployment-output>"
+  }
+}
