@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: dim_country
+    description: One row per country in the ENTSO-E dataset (NL, BE, CH).
+    columns:
+      - name: country
+        description: ISO country code, primary key.
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_date
+    description: Calendar dimension covering every date present in the dataset.
+    columns:
+      - name: date_day
+        description: Calendar date, primary key.
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_hourly_market
+    description: Hourly grain fact table of day-ahead price and renewable generation share per country.
+    columns:
+      - name: country
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_country')
+                field: country
+      - name: date_day
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day
+      - name: price_eur_mwh
+        tests:
+          - not_null
+
+  - name: fct_daily_summary
+    description: Daily grain fact table of aggregated price and renewable share per country.
+    columns:
+      - name: country
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_country')
+                field: country
+      - name: date_day
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day

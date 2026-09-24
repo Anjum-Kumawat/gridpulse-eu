@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: gridpulse_raw
+    database: GRIDPULSE
+    schema: RAW
+    tables:
+      - name: hourly_market
+      - name: daily_summary
