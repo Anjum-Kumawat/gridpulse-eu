@@ -147,7 +147,7 @@ def parse_bronze_folder(kind: str, parse_fn) -> pd.DataFrame:
     not text-decoded content that would corrupt zip files), then parses on the
     driver - the whole dataset here is small enough that distributed parsing
     would be pure overhead."""
-    paths = [f"{BRONZE}/entsoe/{kind}/*/*.xml", f"{BRONZE}/entsoe/{kind}/*/*.zip"]
+    paths = f"{BRONZE}/entsoe/{kind}/*/*.{{xml,zip}}"
     bdf = spark.read.format("binaryFile").load(paths)
     pdf = bdf.select("path", "content").toPandas()
 
