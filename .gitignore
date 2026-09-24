@@ -5,3 +5,11 @@ __pycache__/
 .python_packages/
 bin/
 obj/
+
+# Default .gitignore content added by dbt Cloud# you shouldn't commit these into source control
+# these are the default directory names, adjust/add to fit your needs
+target/
+dbt_packages/
+logs/
+# end dbt Cloud content
+dbt_internal_packages/
